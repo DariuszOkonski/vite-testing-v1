@@ -2,8 +2,18 @@ import { render, screen } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
 import Pagination from './Pagination';
 import userEvent from '@testing-library/user-event';
+import * as utils from '../utils';
 
-describe.skip('Pagination v2', () => {
+// if we mock range like this in Pagination file imported range
+// won't be used but this one here, during a testing;
+// vi.mock is hoisted, don't put it to describe
+// vi.mock('../utils.js', () => {
+//   return {
+//     range: () => [1, 2, 3, 4, 5],
+//   };
+// });
+
+describe('Pagination v2', () => {
   it('renders correct pagination', () => {
     render(<Pagination total={50} limit={10} currentPage={1} />);
 
@@ -52,6 +62,12 @@ describe.skip('Pagination v2', () => {
     expect(handlerMock).toHaveBeenCalledOnce();
     expect(handlerMock).toHaveBeenCalledWith(1);
   });
+
+  it('should spyOn utils', () => {
+    vi.spyOn(utils, 'range');
+    render(<Pagination total={50} limit={10} currentPage={1} />);
+    expect(utils.range).toHaveBeenCalledWith(1, 6);
+  });
 });
 
 describe('Pagination', () => {
@@ -99,5 +115,11 @@ describe('Pagination', () => {
 
     expect(mockedSelectPage).toHaveBeenCalledOnce();
     expect(mockedSelectPage).toHaveBeenCalledWith(2);
+  });
+
+  it('spies on utils', () => {
+    vi.spyOn(utils, 'range');
+    render(<Pagination total={50} limit={10} currentPage={1} />);
+    expect(utils.range).toHaveBeenCalledWith(1, 6);
   });
 });
