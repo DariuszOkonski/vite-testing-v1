@@ -3,7 +3,7 @@ import { describe, expect, it, vi } from 'vitest';
 import Pagination from './Pagination';
 import userEvent from '@testing-library/user-event';
 
-describe('Pagination v2', () => {
+describe.skip('Pagination v2', () => {
   it('renders correct pagination', () => {
     render(<Pagination total={50} limit={10} currentPage={1} />);
 
@@ -54,7 +54,7 @@ describe('Pagination v2', () => {
   });
 });
 
-describe.skip('Pagination', () => {
+describe('Pagination', () => {
   it('renders correct pagination', () => {
     render(<Pagination total={50} limit={10} currentPage={1} />);
     const pageContainers = screen.getAllByTestId('page-container');
