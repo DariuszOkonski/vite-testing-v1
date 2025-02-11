@@ -1,9 +1,9 @@
-import Pagination from './pagination/Pagination';
+import UserName from './username/UserName';
 
 const App = () => {
   return (
     <div>
-      <Pagination total={50} limit={10} currentPage={1} />
+      <UserName />
     </div>
   );
 };
