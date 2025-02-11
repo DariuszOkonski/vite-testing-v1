@@ -1,9 +1,9 @@
-import UserName from './username/UserName';
+import Tags from './tags/Tags';
 
 const App = () => {
   return (
     <div>
-      <UserName />
+      <Tags />
     </div>
   );
 };
