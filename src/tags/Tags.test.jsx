@@ -1,17 +1,7 @@
 import { render, screen } from '@testing-library/react';
-import {
-  afterAll,
-  afterEach,
-  beforeAll,
-  describe,
-  expect,
-  it,
-  vi,
-} from 'vitest';
-import Tags from './Tags';
-import { setupServer } from 'msw/node';
-import { http, HttpResponse } from 'msw';
 import axios from 'axios';
+import { describe, expect, it, vi } from 'vitest';
+import Tags from './Tags';
 
 describe('Tags', () => {
   // const server = setupServer(

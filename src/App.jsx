@@ -1,11 +1,5 @@
-import Tags from './tags/Tags';
-
 const App = () => {
-  return (
-    <div>
-      <Tags />
-    </div>
-  );
+  return <div></div>;
 };
 
 export default App;
