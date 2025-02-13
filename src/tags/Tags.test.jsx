@@ -29,8 +29,10 @@ describe('Tags', () => {
       data: [{ id: '1', name: 'bar' }],
     };
     vi.spyOn(axios, 'get').mockResolvedValue(mockResponse);
+
     render(<Tags />);
     const tags = await screen.findAllByTestId('tag');
+
     expect(tags).toHaveLength(1);
     expect(tags[0]).toHaveTextContent('bar');
   });

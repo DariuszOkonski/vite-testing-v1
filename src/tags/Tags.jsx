@@ -5,7 +5,6 @@ const Tags = () => {
   const [tags, setTags] = useState([]);
 
   useEffect(() => {
-    console.log('useEffect tags2 : ', tags);
     axios.get('http://localhost:3004/tags').then((response) => {
       setTags(response.data);
     });
