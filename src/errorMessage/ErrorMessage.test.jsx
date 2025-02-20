@@ -5,12 +5,18 @@ import ErrorMessage from './ErrorMessage';
 describe('ErrorMessage', () => {
   it('renders default error state', () => {
     render(<ErrorMessage />);
-    const result = screen.getByTestId('message-container');
-    expect(result.textContent).toMatch(/went wrong/i);
+    expect(screen.getByTestId('message-container')).toHaveTextContent(
+      'Something went wrong'
+    );
+  });
+
+  it('render custom error state', () => {
+    render(<ErrorMessage message='Email is already taken' />);
+    expect(screen.getByTestId('message-container')).toHaveTextContent(
+      'Email is already taken'
+    );
   });
 });
-
-// describe('ErrorMessage', () => {
 //   it('renders default error state', () => {
 //     render(<ErrorMessage />);
 //     const messageContainer = screen.getByTestId('message-container');
