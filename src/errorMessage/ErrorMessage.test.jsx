@@ -6,14 +6,14 @@ describe('ErrorMessage', () => {
   it('renders default error state', () => {
     render(<ErrorMessage />);
     expect(screen.getByTestId('message-container')).toHaveTextContent(
-      'Something went wrong'
+      /something went wrong/i
     );
   });
 
-  it('render custom error state', () => {
+  it('renders custom error state', () => {
     render(<ErrorMessage message='Email is already taken' />);
     expect(screen.getByTestId('message-container')).toHaveTextContent(
-      'Email is already taken'
+      /email is already taken/i
     );
   });
 });
