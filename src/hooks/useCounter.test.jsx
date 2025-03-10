@@ -1,43 +1,25 @@
-import { renderHook, act } from '@testing-library/react';
+import { renderHook, act, render, waitFor } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 import useCounter from './useCounter';
 
-// describe('useCounter V2', () => {
-//   it('should render initial count', () => {
-//     const { result } = renderHook(() => useCounter());
-//     expect(result.current.count).toEqual(0);
-//   });
+describe('useCounter', () => {
+  it('should render initial count', () => {
+    const { result } = renderHook(() => useCounter());
+    expect(result.current.count).toBe(0);
+  });
 
-//   it('should render with given number', () => {
-//     const { result } = renderHook(() => useCounter(10));
-//     expect(result.current.count).toEqual(10);
-//   });
+  it('should render provided count', () => {
+    const { result } = renderHook(() => useCounter(10));
+    expect(result.current.count).toBe(10);
+  });
 
-//   it('should increment the count', () => {
-//     const { result } = renderHook(() => useCounter(0));
-//     act(() => {
-//       result.current.increment();
-//     });
-//     expect(result.current.count).toEqual(1);
-//   });
-// });
+  it('should increment the count', async () => {
+    const { result } = renderHook(() => useCounter());
 
-// describe.skip('useCounter V1', () => {
-//   it('should render initial count', () => {
-//     const { result } = renderHook(() => useCounter());
-//     expect(result.current.count).toEqual(0);
-//   });
+    act(() => {
+      result.current.increment();
+    });
 
-//   it('should render changed initial value', () => {
-//     const { result } = renderHook(() => useCounter(10));
-//     expect(result.current.count).toEqual(10);
-//   });
-
-//   it('should increment the count', () => {
-//     const { result } = renderHook(() => useCounter());
-//     act(() => {
-//       result.current.increment();
-//     });
-//     expect(result.current.count).toEqual(1);
-//   });
-// });
+    expect(result.current.count).toBe(1);
+  });
+});
