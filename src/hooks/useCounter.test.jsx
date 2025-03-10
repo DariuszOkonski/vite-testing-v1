@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import { renderHook, act, render, waitFor } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 import useCounter from './useCounter';
