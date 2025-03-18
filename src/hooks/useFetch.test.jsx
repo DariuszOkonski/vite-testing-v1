@@ -3,6 +3,10 @@ import { describe, expect, it, vi } from 'vitest';
 import useFetch from './useFetch';
 import axios from 'axios';
 
+describe('useFetch V2', () => {
+  it('should', () => {});
+});
+
 describe('useFetch', () => {
   it('should render initial values', () => {
     const { result } = renderHook(() => useFetch('/todos'));
