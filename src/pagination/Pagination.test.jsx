@@ -9,7 +9,6 @@ describe('Pagination', () => {
     render(<Pagination total={50} limit={10} currentPage={1} />);
 
     const pageContainers = screen.getAllByTestId('page-container');
-
     expect(pageContainers).toHaveLength(5);
     expect(pageContainers[0]).toHaveTextContent('1');
   });
@@ -27,9 +26,9 @@ describe('Pagination', () => {
     );
 
     const pageContainers = screen.getAllByTestId('page-container');
-    await user.click(pageContainers[0]);
+    await user.click(pageContainers[3]);
 
     expect(handleClick).toHaveBeenCalledOnce();
-    expect(handleClick).toHaveBeenCalledWith(1);
+    expect(handleClick).toHaveBeenCalledWith(4);
   });
 });
