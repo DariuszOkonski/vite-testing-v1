@@ -4,37 +4,30 @@ import UserName from './UserName';
 import userEvent from '@testing-library/user-event';
 
 describe('UserName', () => {
-  it('should', () => {
-    
+  it('renders default empty text', () => {
+    render(<UserName />)
+
+    expect(screen.getByTestId('username')).toHaveTextContent('')
+  });
+
+  it('renders changed username with button', async () => {
+    const user = userEvent.setup();
+    render(<UserName />)
+
+    await user.click(screen.getByTestId('button'))
+
+    expect(screen.getByTestId('username')).toHaveTextContent('bar')
   })
-})
 
-// describe('UserName', () => {
-//   it('renders default empty text', () => {
-//     render(<UserName />);
-//     const username = screen.getByTestId('username');
-//     expect(username).toHaveTextContent('');
-//   });
+  it('renders changed username with input', async () => {
+    const user = userEvent.setup();
+    render(<UserName />);
 
-//   it('renders changed username with button', async () => {
-//     const user = userEvent.setup();
-//     render(<UserName />);
+    const usernameInput = screen.getByTestId('usernameInput');
+    const username = screen.getByTestId('username');
 
-//     const username = await screen.findByTestId('username');
-//     const button = await screen.findByTestId('button');
-//     await user.click(button);
+    await user.type(usernameInput, 'foo')
 
-//     expect(username).toHaveTextContent('bar');
-//   });
-
-//   it('renders changed username with input', async () => {
-//     const user = userEvent.setup();
-//     render(<UserName />);
-
-//     const username = await screen.findByTestId('username');
-//     const usernameInput = await screen.findByTestId('usernameInput');
-//     await user.type(usernameInput, 'foo');
-
-//     expect(username).toHaveTextContent('foo');
-//   });
-// });
+    expect(username).toHaveTextContent('foo')
+  })
+});
